@@ -12,11 +12,13 @@ const mockDB = [
 ];
 
 app.get("/", (req, res) => {
-  return res.status(201).json({ data: mockDB });
+  return res.status(200).json({ data: mockDB });
 });
 
 app.post("/send", (req, res) => {
-  // Falta algo
+
+  mockDB.push({id: 1,email: "francisco@example.com" });
+
   return res.status(201).json({ data: mockDB });
 });
 
@@ -28,7 +30,7 @@ app.put("/update/:id", (req, res) => {
 
 app.delete("/destroy/:id", (req, res) => {
   const i = mockDB.findIndex((el) => el.id === Number(req.params.id));
-  mockDB.splice(i, -1);
+  mockDB.splice(i, 1);
   return res.status(200).json({ data: mockDB });
 });
 
